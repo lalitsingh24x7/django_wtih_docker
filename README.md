@@ -1,6 +1,6 @@
 ## Django, docker, nginx and gunicorn with static and media
 
-For production jsut set DEBUG=True
+For production just set DEBUG=True
 
 ### Util command
 ##### 1: Make build and run on deman mode
