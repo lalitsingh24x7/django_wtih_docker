@@ -1,0 +1,25 @@
+version: '2'
+services:
+  db:
+    image: postgres
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "8004:8000"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - .:/usr/src/app
+    depends_on:
+      - web
+  web:
+    build: .
+    container_name: django
+    command: bash -c "pip install -r requirements.txt && python manage.py migrate && python manage.py collectstatic --noinput && gunicorn django_docker_nginx.wsgi  --timeout 600 -b 0.0.0.0:8000"
+    volumes:
+      - .:/usr/src/app
+    expose:
+      - "8000"
+    depends_on:
+      - db
