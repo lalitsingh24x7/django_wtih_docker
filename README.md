@@ -1,6 +1,6 @@
 ## Django, docker, nginx and gunicorn with static and media
 
-For production just set DEBUG=True
+For production just set DEBUG=False
 
 ### Util command
 ##### 1: Make build and run on deman mode
